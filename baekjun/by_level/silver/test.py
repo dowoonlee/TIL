@@ -1,6 +1,5 @@
 import sys
 
+x = 10.0
 
-x = [[0, 0] for _ in range(5)]
-
-print(x)
+print(bool(x%1))

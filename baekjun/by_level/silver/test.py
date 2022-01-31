@@ -1,5 +1,4 @@
 import sys
 
-x = 10.0
+x = [1,2,3,4,5]
 
-print(bool(x%1))

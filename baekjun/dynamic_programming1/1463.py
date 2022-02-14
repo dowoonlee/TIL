@@ -16,10 +16,14 @@ else:
         tdp = []
         if i%3==0:
             tdp.append(dp[int(i/3)]+1)
+            print(dp[int(i/3)]+1)
         if i%2==0:
             tdp.append(dp[int(i/2)]+1)
+            print(dp[int(i/2)]+1)
         tdp.append(dp[i-1]+1)
+        print(dp[i-1]+1)
         dp[i] = min(tdp)
 
+    print(dp)
     print(dp[n])
 

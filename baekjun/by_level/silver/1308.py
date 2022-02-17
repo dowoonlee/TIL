@@ -1,5 +1,8 @@
 import sys
 
+tday = list(map(int, sys.stdin.readline().split()))
+dday = list(map(int, sys.stdin.readline().split()))
+
 def ycheck(yr):
     res=False
     if yr%4==0:
@@ -20,4 +23,15 @@ def y2d(ymd):
         days = sum(m1[0:ymd[1]-1])+ymd[2]
     return days-1
 
-print(y2d([2008, 1, 31]))
+if ((dday[0]>tday[0]+1000) or (dday[0]==tday[0]+1000) and y2d(dday)>=y2d(tday)):
+    print('gg')
+else:
+    ans = 0
+    for yr in range(tday[0], dday[0]):
+        if ycheck(yr):
+            ans+=366
+        else:
+            ans+=365
+    ans-=y2d(tday)
+    ans+=y2d(dday)
+    print('D-%d'%ans)

@@ -9,6 +9,7 @@ for _ in range(n):
     b_list = list(map(int, sys.stdin.readline().split()))
     for bd in b_list[1:]:
         b_d[bd-1] += 1
+
     end = False
     for i in range(3, 0, -1):
         if a_d[i]>b_d[i]:

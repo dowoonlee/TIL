@@ -68,7 +68,7 @@ for week in range(n_week):
 
     for i in range(n_date):
         ymd_str = day[i].text
-        ymd = list(map(int, ymd_str[0:-3].split(".")))
+        ymd = list(map(str, ymd_str[0:-3].split(".")))
 
         lec_times = driver.find_elements(by=By.CLASS_NAME, value='course > li:nth-child(%d) > dl > dt' % (i + 2))
         lec_texts = driver.find_elements(by=By.CLASS_NAME, value='course > li:nth-child(%d) > dl > dd > div.info' % (i + 2))
@@ -77,7 +77,7 @@ for week in range(n_week):
         data_lec = []
         for j in range(len(lec_times)):
             t_st, t_ed = map(str, lec_times[j].text.split("~"))
-            lecture_time = [list(map(int, t_st.split(":"))), list(map(int, t_ed.split(":")))]
+            lecture_time = ["-".join(ymd)+"T"+t_st+":00", "-".join(ymd)+"T"+t_ed+":00"]
             lecture_text = lec_texts[j].text
             title, abstract, _ = list(map(str, lecture_text.split("\n")))
             href, btn_name = '', ''
@@ -107,7 +107,7 @@ for week in range(n_week):
     btn_next.click()
     driver.implicitly_wait(0.5)
 with open('ssafy_schedule.json', 'w', encoding='utf-8') as make_file:
-    json.dump(file_data, make_file, ensure_ascii=False, indent="\t")
+    json.dump(file_data, make_file, ensure_ascii=False)
 
 
 # driver.get_screenshot_as_file('./capture.png')

@@ -21,19 +21,4 @@ import sys
 #n = int(sys.stdin.readline())
 #data = [sys.stdin.readline().strip() for i in range(n)]
 
-def ABmodC(a, b, c):
-    binb = bin(b)[2:]
-    modc = [0]*len(binb)
-    modc[0] = a%c
-    for i in range(1, len(binb)):
-        modc[i] = (modc[i-1]*modc[i-1])%c
-
-    res = 1
-    for i in range(len(binb)):
-        if int(binb[-1-i]):
-            res *= (modc[i])
-            res %= c
-    return res
-
-x = ABmodC(5, 117, 19)
-print(x)
+print((16*9*5*17)%19)

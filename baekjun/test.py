@@ -21,4 +21,6 @@ import sys
 #n = int(sys.stdin.readline())
 #data = [sys.stdin.readline().strip() for i in range(n)]
 
-print((16*9*5*17)%19)
+print(True*True)
+print(True*False)
+print(False*False)

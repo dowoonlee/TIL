@@ -23,34 +23,11 @@ import sys
 
 from collections import deque
 
+import heapq
 
-def solution(n, edges):
-    maxV = 0
-    for edge in edges:
-        maxV = max([edge[0], edge[1], maxV])
+a = []
 
-    graph = [[0] * (maxV + 1) for _ in range(maxV + 1)]
-    for edge in edges:
-        graph[edge[0]][edge[1]] = 1
-        graph[edge[1]][edge[0]] = 1
-
-    global a
-    a = 0
-    def dfs(root, visited=[]):
-        global a
-        visited.append(root)
-
-        for w in range(len(graph[root])):
-            if graph[root][w] == 1 and (w not in visited):
-                a += 1
-                dfs(w, visited)
-
-    for i in range(0, maxV + 1):
-        dfs(i)
-        print(a)
-
-    answer = a
-
-    return answer
-
-solution(5, [[0,1],[0,2],[1,3],[1,4]])
+heapq.heappush(a, 5)
+heapq.heappush(a, 3)
+heapq.heappush(a, 1)
+print(a[0])

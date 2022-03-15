@@ -2,27 +2,22 @@ import sys
 
 n = int(sys.stdin.readline())
 m = int(sys.stdin.readline())
-ooo = list(map(int, sys.stdin.readline().split()))
 
-def search(tnum, brk, op):
-    brklist = [0]*11
-    for i in brk:
-        brklist[i] = 1
 
-    cnum = tnum-1
-    flag = True
-    while flag:
-        cnum += op
-        cnumlist = list(map(int, str(cnum)))
-        for i in cnumlist:
-            if brklist[i]:
-                flag=True
-                break
-            else:
-                flag = False
-    return abs(tnum-cnum) + len(cnumlist)
+ans = abs(100-n)
+if m:
+    ooo = set(sys.stdin.readline().split())
+else:
+    ooo = set()
 
-up = search(n, ooo, 1)
-down = search(n, ooo, -1)
-print(min([up, down, abs(n-100)]))
+for num in range(1000001):
+    for x in str(num):
+        if x in ooo:
+            break
+    else:
+        ans = min(ans, len(str(num)) + abs(num-n))
+
+print(ans)
+
+
 

@@ -21,13 +21,13 @@ import sys
 #n = int(sys.stdin.readline())
 #data = [sys.stdin.readline().strip() for i in range(n)]
 
-from collections import deque
 
-import heapq
+card = []
+for t in ["a", "b", "c", "d"]:
+    for n in range(1, 14):
+        card.append([t, n])
 
-a = []
+from itertools import combinations
 
-heapq.heappush(a, 5)
-heapq.heappush(a, 3)
-heapq.heappush(a, 1)
-print(a[0])
+comb = combinations(card, 5)
+print(list(comb)[0])

@@ -34,6 +34,7 @@ for _ in range(t):
     else:
         l = lcm(m, n)
         p, q = ex_euclid(m, n)
+        print(p, q)
 
 
         test = (m//g)*p + (n//g)*q

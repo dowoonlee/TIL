@@ -1,19 +1,11 @@
 import sys
 from itertools import combinations
 
+
 n = int(sys.stdin.readline())
 tree = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
-midx, midy, sumtree = 0, 0, 0
+tree = sorted(tree, key=lambda x:x[2], reverse=True)
 
-for i in range(n):
-    midx += tree[i][0]
-    midy += tree[i][1]
-    sumtree += tree[i][2]
-midx /= n
-midy /= n
-
-tree = sorted(tree, key=lambda x:(x[0]-midx)**2 + (x[1]-midy)**2, reverse=True)
-print(tree)
 
 def bndry(treecut):
     edge = [1000000, 1000000, 0, 0]
@@ -28,8 +20,6 @@ def bndry(treecut):
             edge[3] = max(edge[3], t[1])
 
     lb = 2*(edge[2]-edge[0] + edge[3]-edge[1])
-    if pos_bndry>=lb:
-        print(pos_bndry, lb)
     return pos_bndry>=lb
 
 num = 0
@@ -38,7 +28,6 @@ while num<n+1 and flag:
     it = combinations(range(0, n), num)
     for case in it:
         if bndry(case):
-            print(case)
             print(len(case))
             flag=False
             break

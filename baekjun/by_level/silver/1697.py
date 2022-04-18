@@ -15,7 +15,9 @@ def bfs():
         if x == k:
             print(cnt[x])
             break
+        print("===", x-1,x+1,x*2)
         for j in (x-1,x+1,x*2):
+            print(j)
             if 0<= j <= maxlevel and not cnt[j]:
                 cnt[j] = cnt[x] +1
                 q.append(j)

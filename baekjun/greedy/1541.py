@@ -1,5 +1,5 @@
 import sys
-"""
+
 eq = sys.stdin.readline()
 n, op = [], []
 
@@ -13,12 +13,8 @@ for s in eq:
     else:
         ed+=1
 n.append(int(eq[st:ed]))
-"""
 
 
-#op, n = ['-', '+'],[55, 50, 40]
-op, n = ['+', '+', '+'],[10, 20, 30, 40]
-op, n = ['-'], [9, 9]
 i=1
 n_fin = [n[0]]
 while i<len(n):
@@ -28,6 +24,7 @@ while i<len(n):
     else:
         n_fin.append(n[i])
         i+=1
+print(n_fin)
 
 ans = n_fin[0]
 for i in range(1, len(n_fin)):

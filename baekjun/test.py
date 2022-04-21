@@ -21,6 +21,7 @@ import sys
 # n = int(sys.stdin.readline())
 # data = [sys.stdin.readline().strip() for i in range(n)]
 
-x = [1,2,3]
-x.extend([1,2,3])
+import numpy as np
+
+x = [np.random.randint(100) for _ in range(20)]
 print(x)

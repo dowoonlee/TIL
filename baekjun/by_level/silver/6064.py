@@ -26,18 +26,16 @@ def ex_euclid(a, b):
 for _ in range(t):
     m, n, x, y = map(int, sys.stdin.readline().split())
 
-    g = gcd(m, n)
+    d = x - y
 
-    if x % g != y % g:
-        print(-1)
+    g = gcd(m, n)
+    a, b = ex_euclid(m, n)
+
+    if d%g:
+        ans = -1
 
     else:
-        l = lcm(m, n)
-        p, q = ex_euclid(m, n)
-        print(p, q)
-
-
-        test = (m//g)*p + (n//g)*q
-
-        ans = (x * (n // g) * q + y * (m // g) * q) % l
-        print(ans)
+        k = d // g
+        kk = x- k*a*m
+        ans = (kk-1) % (m//g*n) + 1
+    print(ans)

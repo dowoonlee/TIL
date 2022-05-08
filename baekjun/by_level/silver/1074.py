@@ -25,6 +25,7 @@ coord = [0, 2 ** n - 1, 0, 2 ** n - 1]
 ans = 0
 while (coord[0] != coord[1]):
     coord, ad = quad(coord)
+    print(coord, ad)
     ans += ad
 
 print(ans)

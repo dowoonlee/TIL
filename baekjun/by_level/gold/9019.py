@@ -44,6 +44,7 @@ for _ in range(t):
     ans = ""
     idx = b
     while cnt[idx][0]!=a:
+        print(cnt[idx][1])
         ans += order[cnt[idx][1]]
         idx = cnt[idx][0]
 

@@ -2,7 +2,7 @@ import sys
 
 t = int(sys.stdin.readline())
 
-
+print()
 def gcd(x, y):
     while y:
         x, y = y, x % y
@@ -37,5 +37,7 @@ for _ in range(t):
     else:
         k = d // g
         kk = x- k*a*m
+        print(kk)
         ans = (kk-1) % (m//g*n) + 1
-    print(ans)
+        print(kk-1, m//g*n, (kk-1)%(m//g*n))
+    #print(ans)

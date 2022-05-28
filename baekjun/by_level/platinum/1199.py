@@ -1,27 +1,29 @@
 import sys
 
+sys.setrecursionlimit(10 ** 9)
 n = int(sys.stdin.readline())
-graph = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
+ipt = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
+
+graph = {}
+
+for i in range(n):
+    graph[i] = []
+    rsum = 0
+    for j in range(n):
+        rsum += 1
+        graph[i].append(j)
+    if rsum % 2:
+        print(-1)
+        sys.exit()
 
 
-def chk(g):
-    for i in range(len(g)):
-        s = sum(g[i])
-        if s % 2:
-            return False
-    return True
+def search(root):
+    for i in graph[root]:
+        if ipt[root][i]:
+            ipt[root][i] -= 1
+            ipt[i][root] -= 1
+            search(i)
+    print(root + 1, end=" ")
 
 
-def dfs(now):
-    for i in range(n):
-        if graph[now][i]:
-            graph[now][i] -= 1
-            graph[i][now] -= 1
-            dfs(i)
-    print(now + 1, end=" ")
-
-
-if chk(graph):
-    dfs(0)
-else:
-    print(-1)
+search(0)
